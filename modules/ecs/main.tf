@@ -77,6 +77,10 @@ resource "aws_ecs_service" "this" {
 
   deployment_minimum_healthy_percent = 50
   deployment_maximum_percent         = 100
+
+  # platform_version = "LATEST"
+
+  # iam_role = aws_iam_role.ecs_service_role.arn
 }
 
 # Auto Scaling ECS Service
@@ -171,3 +175,54 @@ resource "aws_iam_role_policy_attachment" "ecs_task_role_policy" {
   role       = aws_iam_role.ecs_task_role.name
   policy_arn  = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
+
+## IAM
+# IAM Role for ECS Service
+resource "aws_iam_role" "ecs_service_role" {
+  name = "ecs-service-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "ecs.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# Attach Policies to IAM Role
+resource "aws_iam_role_policy_attachment" "ecs_service_policy_attachment" {
+  role       = aws_iam_role.ecs_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+# Custom Policy for ALB Permissions
+resource "aws_iam_policy" "ecs_alb_policy" {
+  name   = "ecs-alb-policy"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = [
+          "elasticloadbalancing:Describe*",
+          "elasticloadbalancing:DeregisterTargets",
+          "elasticloadbalancing:RegisterTargets"
+        ],
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+# Attach Custom Policy to IAM Role
+resource "aws_iam_role_policy_attachment" "ecs_alb_policy_attachment" {
+  role       = aws_iam_role.ecs_service_role.name
+  policy_arn = aws_iam_policy.ecs_alb_policy.arn
+}
+## IAM

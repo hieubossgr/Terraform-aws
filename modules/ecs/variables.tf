@@ -87,3 +87,5 @@ variable "min_capacity" {
   description = "Số lượng tối thiểu task cho auto scaling"
   type        = number
 }
+
+# variable "alb_http_listener_arn" {}

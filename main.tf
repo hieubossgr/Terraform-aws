@@ -44,7 +44,7 @@ module "ecs" {
   desired_count      = var.desired_count
   private_subnets    = [module.vpc.private_ecs_subnet_id]
   security_group_id  = module.security_group.ecs_sg_id
-  target_group_arn   = module.alb.alb_arn
+  target_group_arn   = module.alb.ecs_target_group_arn
   max_capacity       = var.max_capacity
   min_capacity       = var.min_capacity
 }
