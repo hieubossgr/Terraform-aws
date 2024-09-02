@@ -8,10 +8,10 @@ module "vpc" {
   public_subnet_cidr-2 = var.public_subnet_cidr-2
   private_ecs_subnet_cidr = var.private_ecs_subnet_cidr
   private_cronjob_subnet_cidr = var.private_cronjob_subnet_cidr
-  private_rds_subnet_cidr = var.private_rds_subnet_cidr
-  availability_zone_public-1a = var.availability_zone_public-1a
-  availability_zone_public-1b = var.availability_zone_public-1b
-  availability_zone_private = var.availability_zone_private
+  private_rds_subnet_cidr_1 = var.private_rds_subnet_cidr_1
+  private_rds_subnet_cidr_2 = var.private_rds_subnet_cidr_2
+  availability_zone_1a = var.availability_zone_1a
+  availability_zone_1b = var.availability_zone_1b
   public_cidr_block = var.public_cidr_block
 }
 
@@ -47,4 +47,22 @@ module "ecs" {
   target_group_arn   = module.alb.ecs_target_group_arn
   max_capacity       = var.max_capacity
   min_capacity       = var.min_capacity
+}
+
+module "rds-aurora" {
+  source             = "./modules/rds-aurora"
+  cluster_identifier = var.cluster_rds
+  availability_zone = var.availability_zone
+  engine_aurora = var.engine_aurora
+  engine_version = var.engine_version
+  database_name = var.database_name
+  master_username = var.master_username
+  master_password = var.master_password
+  security_group_id = module.security_group.rds_sg_id
+  subnet_ids = [module.vpc.private_rds_subnet_id_1, module.vpc.private_rds_subnet_id_2]
+  rds_write_number = var.rds_write_number
+  rds_read_number = var.rds_read_number
+  instance_class = var.rds_instance_class
+  reader_max_capacity = var.reader_max_capacity
+  reader_min_capacity = var.reader_min_capacity
 }

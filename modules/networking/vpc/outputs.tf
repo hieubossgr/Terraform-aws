@@ -14,8 +14,12 @@ output "private_cronjob_subnet_id" {
   value = aws_subnet.private_cronjob.id
 }
 
-output "private_rds_subnet_id" {
-  value = aws_subnet.private_rds.id
+output "private_rds_subnet_id_1" {
+  value = aws_subnet.private_rds_1.id
+}
+
+output "private_rds_subnet_id_2" {
+  value = aws_subnet.private_rds_2.id
 }
 
 output "vpc_custom" {

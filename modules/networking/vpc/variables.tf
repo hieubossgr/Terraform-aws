@@ -23,23 +23,23 @@ variable "private_cronjob_subnet_cidr" {
   type        = string
 }
 
-variable "private_rds_subnet_cidr" {
+variable "private_rds_subnet_cidr_1" {
   description = "CIDR block for the RDS private subnet"
   type        = string
 }
 
-variable "availability_zone_public-1a" {
+variable "private_rds_subnet_cidr_2" {
+  description = "CIDR block for the RDS private subnet"
+  type        = string
+}
+
+variable "availability_zone_1a" {
   description = "Availability zone for the public subnet"
   type        = string
 }
 
-variable "availability_zone_public-1b" {
+variable "availability_zone_1b" {
   description = "Availability zone for the public subnet"
-  type        = string
-}
-
-variable "availability_zone_private" {
-  description = "Availability zone for the private subnet"
   type        = string
 }
 

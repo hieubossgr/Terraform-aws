@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "custom_gateway" {
 resource "aws_subnet" "public-1" {
   vpc_id                  = aws_vpc.custom_vpc.id
   cidr_block              = var.public_subnet_cidr-1
-  availability_zone       = var.availability_zone_public-1a
+  availability_zone       = var.availability_zone_1a
   map_public_ip_on_launch = false
   tags = {
     Name = "public-subnet"
@@ -31,7 +31,7 @@ resource "aws_subnet" "public-1" {
 resource "aws_subnet" "public-2" {
   vpc_id                  = aws_vpc.custom_vpc.id
   cidr_block              = var.public_subnet_cidr-2
-  availability_zone       = var.availability_zone_public-1b
+  availability_zone       = var.availability_zone_1b
   map_public_ip_on_launch = false
   tags = {
     Name = "public-subnet"
@@ -68,7 +68,7 @@ resource "aws_route_table_association" "public-2" {
 resource "aws_subnet" "private_ecs" {
   vpc_id            = aws_vpc.custom_vpc.id
   cidr_block        = var.private_ecs_subnet_cidr
-  availability_zone = var.availability_zone_private
+  availability_zone = var.availability_zone_1a
   tags = {
     Name = "private-subnet-ecs"
   }
@@ -78,19 +78,28 @@ resource "aws_subnet" "private_ecs" {
 resource "aws_subnet" "private_cronjob" {
   vpc_id            = aws_vpc.custom_vpc.id
   cidr_block        = var.private_cronjob_subnet_cidr
-  availability_zone = var.availability_zone_private
+  availability_zone = var.availability_zone_1a
   tags = {
     Name = "private-subnet-cronjob"
   }
 }
 
 # Private subnet
-resource "aws_subnet" "private_rds" {
+resource "aws_subnet" "private_rds_1" {
   vpc_id            = aws_vpc.custom_vpc.id
-  cidr_block        = var.private_rds_subnet_cidr
-  availability_zone = var.availability_zone_private
+  cidr_block        = var.private_rds_subnet_cidr_1
+  availability_zone = var.availability_zone_1a
   tags = {
-    Name = "private-subnet-rds"
+    Name = "private-subnet-rds-1"
+  }
+}
+
+resource "aws_subnet" "private_rds_2" {
+  vpc_id            = aws_vpc.custom_vpc.id
+  cidr_block        = var.private_rds_subnet_cidr_2
+  availability_zone = var.availability_zone_1b
+  tags = {
+    Name = "private-subnet-rds-2"
   }
 }
 
