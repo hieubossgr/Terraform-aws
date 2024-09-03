@@ -94,3 +94,11 @@ module "iam" {
   policy_name = var.policy_name
   s3_bucket_name = module.s3-bucket.bucket_name
 }
+
+module "s3_gateway" {
+  source = "./modules/s3_gateway"
+
+  vpc_id = module.vpc.vpc_custom
+  region = var.region
+  route_table_ids = [module.vpc.route_table_ecs]
+}

@@ -79,3 +79,6 @@ variable "bucket_name" {}
 variable "role_name" {}
 variable "policy_name" {}
 ## MODULE IAM
+
+## MODULE S3_GATEWAY
+## MODULE S3_GATEWAY

@@ -25,3 +25,7 @@ output "private_rds_subnet_id_2" {
 output "vpc_custom" {
   value = aws_vpc.custom_vpc.id
 }
+
+output "route_table_ecs" {
+  value = aws_route_table.private_route_table.id
+}
