@@ -18,16 +18,6 @@ variable "task_memory" {
   type        = string
 }
 
-# variable "execution_role_arn" {
-#   description = "The ARN of the IAM role that allows the ECS task to pull container images and publish logs"
-#   type        = string
-# }
-
-# variable "task_role_arn" {
-#   description = "ARN của IAM role cho task"
-#   type        = string
-# }
-
 variable "container_name" {
   description = "Container name"
   type        = string
@@ -87,5 +77,3 @@ variable "min_capacity" {
   description = "Số lượng tối thiểu task cho auto scaling"
   type        = number
 }
-
-# variable "alb_http_listener_arn" {}

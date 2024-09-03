@@ -36,7 +36,7 @@ module "ecs" {
   task_cpu           = var.task_cpu
   task_memory        = var.task_memory
   container_name     = var.container_name
-  container_image    = var.container_image
+  container_image    = var.ecs_container_image
   container_cpu      = var.container_cpu
   container_memory   = var.container_memory
   container_port     = var.container_port
@@ -65,4 +65,18 @@ module "rds-aurora" {
   instance_class = var.rds_instance_class
   reader_max_capacity = var.reader_max_capacity
   reader_min_capacity = var.reader_min_capacity
+}
+
+module "cronjob" {
+  source = "./modules/cronjob"
+
+  name                  = var.cronjob_name
+  subnet_ids            = [module.vpc.private_cronjob_subnet_id]
+  security_group_id     = module.security_group.cronjob_sg_id
+  container_image       = var.cronjob_container_image
+  command               = var.cronjob_command
+  schedule_expression   = var.schedule_expression
+  cpu                   = var.container_cpu
+  memory                = var.container_memory
+
 }

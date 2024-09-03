@@ -34,7 +34,7 @@ variable "task_family" {}
 variable "task_cpu" {}
 variable "task_memory" {}
 variable "container_name" {}
-variable "container_image" {}
+variable "ecs_container_image" {}
 variable "container_cpu" {}
 variable "container_memory" {}
 variable "container_port" {}
@@ -61,3 +61,12 @@ variable "rds_instance_class" {}
 variable "reader_max_capacity" {}
 variable "reader_min_capacity" {}
 ## MODULE RDS AURORA
+
+## MODULE CRONJOB
+variable "cronjob_name" {}
+variable "cronjob_container_image" {}
+variable "cronjob_command" {}
+variable "schedule_expression" {}
+variable "cronjob_cpu" {}
+variable "cronjob_memory" {}
+## MODULE CRONJOB
