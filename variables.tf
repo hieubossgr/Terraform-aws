@@ -70,3 +70,7 @@ variable "schedule_expression" {}
 variable "cronjob_cpu" {}
 variable "cronjob_memory" {}
 ## MODULE CRONJOB
+
+## MODULE S3
+variable "bucket_name" {}
+## MODULE S3
