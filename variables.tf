@@ -82,3 +82,7 @@ variable "policy_name" {}
 
 ## MODULE S3_GATEWAY
 ## MODULE S3_GATEWAY
+
+## MODULE ECR
+variable "repository_name" {}
+## MODULE ECR

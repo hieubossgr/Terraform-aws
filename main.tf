@@ -102,3 +102,9 @@ module "s3_gateway" {
   region = var.region
   route_table_ids = [module.vpc.route_table_ecs]
 }
+
+module "ecr" {
+    source = "./modules/ecr"
+
+    repository_name = var.repository_name
+}
