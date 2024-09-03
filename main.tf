@@ -86,3 +86,11 @@ module "s3-bucket" {
 
   bucket_name = var.bucket_name
 }
+
+module "iam" {
+  source = "./modules/iam"
+
+  role_name = var.role_name
+  policy_name = var.policy_name
+  s3_bucket_name = module.s3-bucket.bucket_name
+}

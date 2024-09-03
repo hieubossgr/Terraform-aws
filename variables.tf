@@ -74,3 +74,8 @@ variable "cronjob_memory" {}
 ## MODULE S3
 variable "bucket_name" {}
 ## MODULE S3
+
+## MODULE IAM
+variable "role_name" {}
+variable "policy_name" {}
+## MODULE IAM
