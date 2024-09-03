@@ -108,3 +108,10 @@ module "ecr" {
 
     repository_name = var.repository_name
 }
+
+module "route-53" {
+  source = "./modules/route-53"
+  name = var.route53_name
+  dns_name = module.alb.alb_dns_name
+  zone_id = module.alb.alb_zone_id
+}

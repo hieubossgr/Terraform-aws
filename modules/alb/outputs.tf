@@ -6,6 +6,10 @@ output "alb_dns_name" {
   value = aws_lb.custom_alb.dns_name
 }
 
+output "alb_zone_id" {
+  value = aws_lb.custom_alb.zone_id
+}
+
 output "http_listener_arn" {
   value = aws_lb_listener.http.arn
   description = "The ARN of the HTTP listener for the ALB."

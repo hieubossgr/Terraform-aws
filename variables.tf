@@ -86,3 +86,7 @@ variable "policy_name" {}
 ## MODULE ECR
 variable "repository_name" {}
 ## MODULE ECR
+
+## MODULE ROUTE-53
+variable "route53_name" {}
+## MODULE ROUTE-53
