@@ -2,7 +2,7 @@ resource "aws_default_vpc" "default" {
 }
 
 module "vpc" {
-  source = "./modules/networking/vpc"
+  source = "../modules/networking/vpc"
   vpc_cidr_block = var.vpc_cidr_block
   public_subnet_cidr-1 = var.public_subnet_cidr-1
   public_subnet_cidr-2 = var.public_subnet_cidr-2
@@ -16,12 +16,12 @@ module "vpc" {
 }
 
 module "security_group" {
-  source = "./modules/networking/security_group"
+  source = "../modules/networking/security_group"
   vpc_id = module.vpc.vpc_custom
 }
 
 module "alb" {
-  source = "./modules/alb"
+  source = "../modules/alb"
   vpc_id              = module.vpc.vpc_custom
   subnet_ids          = [module.vpc.public_subnet_1, module.vpc.public_subnet_2]  # List các subnet public từ module VPC
   security_group_id   = module.security_group.alb_sg_id  # Security group cho ALB
@@ -29,7 +29,7 @@ module "alb" {
 }
 
 module "ecs" {
-  source = "./modules/ecs"
+  source = "../modules/ecs"
   
   cluster_ecs_name   = var.cluster_ecs_name
   task_family        = var.task_family
@@ -50,7 +50,7 @@ module "ecs" {
 }
 
 module "rds-aurora" {
-  source             = "./modules/rds-aurora"
+  source             = "../modules/rds-aurora"
   cluster_identifier = var.cluster_rds
   availability_zone = var.availability_zone
   engine_aurora = var.engine_aurora
@@ -68,7 +68,7 @@ module "rds-aurora" {
 }
 
 module "cronjob" {
-  source = "./modules/cronjob"
+  source = "../modules/cronjob"
 
   name                  = var.cronjob_name
   subnet_ids            = [module.vpc.private_cronjob_subnet_id]
@@ -82,13 +82,13 @@ module "cronjob" {
 }
 
 module "s3-bucket" {
-  source = "./modules/s3"
+  source = "../modules/s3"
 
   bucket_name = var.bucket_name
 }
 
 module "iam" {
-  source = "./modules/iam"
+  source = "../modules/iam"
 
   role_name = var.role_name
   policy_name = var.policy_name
@@ -96,7 +96,7 @@ module "iam" {
 }
 
 module "s3_gateway" {
-  source = "./modules/s3_gateway"
+  source = "../modules/s3_gateway"
 
   vpc_id = module.vpc.vpc_custom
   region = var.region
@@ -104,20 +104,20 @@ module "s3_gateway" {
 }
 
 module "ecr" {
-    source = "./modules/ecr"
+    source = "../modules/ecr"
 
     repository_name = var.repository_name
 }
 
 module "route-53" {
-  source = "./modules/route-53"
+  source = "../modules/route-53"
   name = var.route53_name
   dns_name = module.alb.alb_dns_name
   zone_id = module.alb.alb_zone_id
 }
 
 module "codedeploy" {
-  source = "./modules/codedeploy"
+  source = "../modules/codedeploy"
 
   application_name = var.application_name
   deployment_group_name = var.deployment_group_name
