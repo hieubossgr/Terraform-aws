@@ -27,67 +27,14 @@ This Terraform project is designed to set up a scalable and secure AWS infrastru
 
 Here is the overview of the repository structure:
 
-.
-├── modules
-│   ├── route53
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   ├── alb
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── ecs
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── cronjob
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── rds
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── networking
-│   │   ├── vpc
-│   │   │   ├── main.tf
-│   │   │   ├── variables.tf
-│   │   │   └── outputs.tf
-│   │   └── security_group
-│   │       ├── main.tf
-│   │       ├── variables.tf
-│   │       └── outputs.tf
-│   ├── ecr
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── codedeploy
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── s3
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   ├── s3_endpoint
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── outputs.tf
-│   └── iam
-│       ├── main.tf
-│       ├── variables.tf
-│       └── outputs.tf
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── backend.tf
-├── terraform.tfvars
-└── README.md
+![Repository Structure](https://drive.usercontent.google.com/download?id=1PVoLnQP0E_jwF16ijCT4ukDPGpGq5CLT&export=view)
 
 ## System Structure
 ![Người dùng truy cập](https://drive.usercontent.google.com/download?id=1DErN6roSid-SM5t8NH66Y7yyyPPhX4ym&export=view)
+**Người dùng truy cập**
 
 ![Developer push/merge code](https://drive.usercontent.google.com/download?id=16UxAoPNE-tGdaTKe1TqLRaf3bFiCi7Or&export=view)
+**Developer push/merge code**
 
 ## System workflow
 Here’s a high-level workflow of how the different components interact within the system:
