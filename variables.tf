@@ -90,3 +90,8 @@ variable "repository_name" {}
 ## MODULE ROUTE-53
 variable "route53_name" {}
 ## MODULE ROUTE-53
+
+## MODULE CODEDEPLOY
+variable "application_name" {}
+variable "deployment_group_name" {}
+## MODULE CODEDEPLOY

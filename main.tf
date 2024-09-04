@@ -115,3 +115,15 @@ module "route-53" {
   dns_name = module.alb.alb_dns_name
   zone_id = module.alb.alb_zone_id
 }
+
+module "codedeploy" {
+  source = "./modules/codedeploy"
+
+  application_name = var.application_name
+  deployment_group_name = var.deployment_group_name
+  ecs_cluster_name = module.ecs.ecs_cluster_name
+  ecs_service_name = module.ecs.ecs_service_name
+  alb_target_group_blue = module.alb.ecs_target_group_arn
+  alb_target_group_green = module.alb.ecs_target_group_arn_2
+  alb_listener = module.alb.http_listener_arn
+}

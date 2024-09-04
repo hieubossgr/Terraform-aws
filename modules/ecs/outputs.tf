@@ -12,3 +12,11 @@ output "ecs_task_role_arn" {
   description = "The ARN of the ECS task role"
   value       = aws_iam_role.ecs_task_role.arn
 }
+
+output "ecs_cluster_name" {
+  value = aws_ecs_cluster.this.name
+}
+
+output "ecs_service_name" {
+  value = aws_ecs_service.this.name
+}
