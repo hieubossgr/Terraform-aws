@@ -85,9 +85,9 @@ Here is the overview of the repository structure:
 └── README.md
 
 ## System Structure
-![Người dùng truy cập](https://drive.google.com/file/d/1DErN6roSid-SM5t8NH66Y7yyyPPhX4ym/view?usp=sharing)
+![Người dùng truy cập](https://drive.usercontent.google.com/download?id=1DErN6roSid-SM5t8NH66Y7yyyPPhX4ym&export=view)
 
-![Developer push/merge code](https://drive.google.com/file/d/16UxAoPNE-tGdaTKe1TqLRaf3bFiCi7Or/view?usp=sharing)
+![Developer push/merge code](https://drive.usercontent.google.com/download?id=16UxAoPNE-tGdaTKe1TqLRaf3bFiCi7Or&export=view)
 
 ## System workflow
 Here’s a high-level workflow of how the different components interact within the system:
